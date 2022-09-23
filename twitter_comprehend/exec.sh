@@ -1,0 +1,15 @@
+#!/bin/bash
+
+source .env
+
+docker run --rm -e AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
+-e AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} \
+-e TWITTER_API_KEY=${TWITTER_API_KEY} \
+-e TWITTER_API_SECRET=${TWITTER_API_SECRET} \
+-e TWITTER_BEARER_TOKEN=${TWITTER_BEARER_TOKEN} \
+-e TWITTER_ACCESS_TOKEN=${TWITTER_ACCESS_TOKEN} \
+-e TWITTER_ACCESS_SECRET=${TWITTER_ACCESS_SECRET} \
+-p 9000:8080 twitter_comprehend
+
+# request.sh
+curl -d '{}' http://localhost:9000/2015-03-31/functions/function/invocations
